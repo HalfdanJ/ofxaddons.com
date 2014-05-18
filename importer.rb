@@ -108,7 +108,7 @@ class Importer
 
     url = "https://api.github.com/legacy/repos/search/#{term}?start_page=#{next_page}&sort=updated&#$auth_params"
     puts "#{url} requesting page #{next_page}"
-    json = HTTParty.get(url)
+    json = HTTParty.get(url, :headers => {'User-Agent' => 'ofxAddons.com-app'})
     
     if !json["repositories"]
       puts "NO REPOS"
